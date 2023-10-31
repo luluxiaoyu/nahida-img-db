@@ -3,7 +3,7 @@ const sqlite3 = require('sqlite3').verbose();
 const axios = require('axios');
 
 const app = express();
-const db = new sqlite3.Database('db.db');
+const db = new sqlite3.Database('db.db', sqlite3.OPEN_READONLY);
 
 // 设置路由
 app.get('/', async (req, res) => {
