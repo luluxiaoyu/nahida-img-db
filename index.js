@@ -1,41 +1,35 @@
-const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
-const axios = require('axios');
-
-const app = express();
-const db = new sqlite3.Database('./db.db', sqlite3.OPEN_READONLY);
-
-// 设置路由
-app.get('/', async (req, res) => {
-  // 执行查询
-  db.all(
-    `SELECT urls FROM main 
-    WHERE r18 != 1 AND tags LIKE '%纳西妲%' AND tags NOT LIKE '%AI%' AND tags NOT LIKE '%NovelAI%' AND status NOT LIKE '%unavailable%'`,
-    async (err, rows) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send('Internal Server Error');
-      } else {
-        // 随机选择结果
-        const randomRow = rows[Math.floor(Math.random() * rows.length)];
-        const imageUrl = randomRow.urls;
- 
-        try {
-          // 下载图片并将其作为响应发送
-          const imageResult = await axios.get(imageUrl, { responseType: 'arraybuffer' });
-          const imageBuffer = Buffer.from(imageResult.data, 'binary');
-          res.set('Content-Type', 'image/png');
-          res.send(imageBuffer);
-        } catch (error) {
-          console.error(error);
-          res.status(500).send('Internal Server Error');
-        }
-      }
-    }
-  );
-});
-
-// 启动服务器
-app.listen(32031, () => {
-  console.log('Server is running on port 32031');
+const express = require('express');  
+const axios = require('axios');  
+const fs = require('fs');  
+const app = express();  
+const port = 32000;  
+  
+app.get('/', async (req, res) => {  
+  try {  
+    // 读取normal.txt文件中的所有行  
+    const fileContent = fs.readFileSync('normal.txt', 'utf8');  
+    const lines = fileContent.split('\n');  
+  
+    // 随机选择一行作为图片URL  
+    const randomLineIndex = Math.floor(Math.random() * lines.length);  
+    const imageUrl = lines[randomLineIndex];  
+  
+    // 使用axios获取图片内容  
+    const response = await axios({  
+      method: 'get',  
+      url: imageUrl,  
+      responseType: 'stream',  
+    });  
+  
+    // 将图片内容写入响应中  
+    res.set('Content-Type', 'image/jpeg');  
+    response.data.pipe(res);  
+  } catch (error) {  
+    console.error(error);  
+    res.status(500).send('Internal Server Error');  
+  }  
+});  
+  
+app.listen(port, () => {  
+  console.log(`Server is running on port ${port}`);  
 });
