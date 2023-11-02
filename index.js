@@ -3,7 +3,7 @@ const axios = require('axios');
 
 const app = express();
 
-app.get('/diwfdianifiaiwf3983uy8fjiajfiamfmajfe/', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     const response = await axios.get('https://txtserver.vercel.app/?url=1');
     const urls = response.data.split('\n'); // 将返回的多行url分割成数组
