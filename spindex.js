@@ -5,7 +5,7 @@ const app = express();
 
 app.get('/diwfdianifiaiwf3983uy8fjiajfiamfmajfe/', async (req, res) => {
   try {
-    const response = await axios.get('https://txtserver.vercel.app/?url=2');
+    const response = await axios.get('https://txtserverrfmomgfq3jr93ury3qur092.vercel.app/?url=2');
     const urls = response.data.split('\n'); // 将返回的多行url分割成数组
 
     const randomIndex = Math.floor(Math.random() * urls.length);
