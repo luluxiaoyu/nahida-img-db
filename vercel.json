@@ -1,35 +1,12 @@
-{
-  "version": 2,
-  "builds": [
-    {
-      "src": "index.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "spindex.js",
-      "use": "@vercel/node"
-    },
-    {"assets": ["normal.txt"] }
-  ],
-  "rewrites": [
-    {
-      "source": "/normal.txt",
-      "destination": "/normal.txt"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.js"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/normal.txt",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        }
-      ]
-    }
-  ]
+{  
+  "version": 2,  
+  "builds": [  
+    { "src": "index.js", "use": "@vercel/node" }  
+  ],  
+  "routes": [  
+    { "src": "/", "dest": "index.js" }  
+  ],  
+  "assets": [  
+    "./normal.txt"  
+  ]  
 }
