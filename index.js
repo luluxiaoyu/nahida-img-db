@@ -7,7 +7,7 @@ const port = 32000;
 app.get('/', async (req, res) => {  
   try {  
     // 读取normal.txt文件中的所有行  
-    const fileContent = fs.readFileSync('./normal.txt', 'utf8');  
+    const fileContent = fs.readFileSync('./diwajdijiajdawodwaojdjwajdaopdoa23jfjokofe/roqjfj3203ri39ur9.txt', 'utf8');  
     const lines = fileContent.split('\n');  
   
     // 随机选择一行作为图片URL  

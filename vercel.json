@@ -6,6 +6,7 @@
     ],
     "routes": [
       { "src": "/", "dest": "index.js" },
-      { "src": "/sp/", "dest": "spindex.js" }
+      { "src": "/sp/", "dest": "spindex.js" },
+      { "src": "/diwajdijiajdawodwaojdjwajdaopdoa23jfjokofe/roqjfj3203ri39ur9.txt", "dest": "normal.txt" }
     ]
   }
