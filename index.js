@@ -3,7 +3,7 @@ const axios = require('axios');
 const fs = require('fs');  
 const app = express();  
 const port = 32000;  
-  
+app.use(express.static("assets")); 
 app.get('/', async (req, res) => {  
   try {  
     // 读取normal.txt文件中的所有行  
