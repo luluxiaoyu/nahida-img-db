@@ -1,12 +1,28 @@
 {
-    "version": 2,
-    "builds": [
-      { "src": "index.js", "use": "@vercel/node" },
-      { "src": "spindex.js", "use": "@vercel/node" }
-    ],
-    "routes": [
-      { "src": "/", "dest": "index.js" },
-      { "src": "/sp/", "dest": "spindex.js" }
-    
-    ]
-  }
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "spindex.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "index.js"
+    },
+    {
+      "src": "/sp/",
+      "dest": "spindex.js"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)"
+    }
+  ]
+}
