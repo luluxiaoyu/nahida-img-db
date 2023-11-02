@@ -13,7 +13,7 @@
   "rewrites": [
     {
       "source": "/normal.txt",
-      "destination": "/404"
+      "destination": "/normal.txt"
     },
     {
       "source": "/(.*)",
@@ -22,7 +22,7 @@
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/normal.txt",
       "headers": [
         {
           "key": "Cache-Control",
